@@ -16,6 +16,7 @@ The chopping process stops if:
 
 - Super simple. Just 30 lines of code!
 - Compatible with any game or mod
-- Works fine with huge trees
+- Works fine with huge trees (increase `max_distance` and `max_radius` if
+  needed)
 - Recognizes trees and tools by their group, so it does not require any
   configuration
