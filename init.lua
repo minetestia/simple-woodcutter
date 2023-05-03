@@ -1,30 +1,15 @@
 local max_distance, max_radius, delay = 20, 4, 0.1
-local diggers = {}
-
-local function start_process(pos, oldnode, digger)
-  pos = minetest.find_node_near(pos, max_radius, oldnode.name)
-  if not pos then return end
-  if pos:distance(digger:get_pos()) > max_distance then return end
-  minetest.node_dig(pos, minetest.get_node(pos), digger)
-end
-
-local function stop_process(digger)
-  local name = digger:get_player_name()
-  local process = diggers[name]
-  if process then
-    process:cancel()
-    diggers[name] = nil
-  end
-  return name
-end
 
 minetest.register_on_dignode(function(pos, oldnode, digger)
   if not minetest.registered_nodes[oldnode.name].groups.tree then return end
   local groups = digger:get_wielded_item():get_definition().groups
   if not groups or not groups.axe then return end
-  local name = stop_process(digger)
-  diggers[name] = minetest.after(delay, start_process, pos, oldnode, digger)
+  if digger:get_hp() == 0 then return end
+  if not minetest.get_player_by_name(digger:get_player_name()) then return end
+  minetest.after(delay, function()
+    pos = minetest.find_node_near(pos, max_radius, oldnode.name)
+    if not pos then return end
+    if pos:distance(digger:get_pos()) > max_distance then return end
+    minetest.node_dig(pos, minetest.get_node(pos), digger)
+  end)
 end)
-
-minetest.register_on_dieplayer(stop_process)
-minetest.register_on_leaveplayer(stop_process)
