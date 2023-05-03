@@ -6,7 +6,7 @@ This mod chops the whole tree if you are holding an axe.
 
 The chopping process stops if:
 
-- You are too far away from the target (20 blocks by default)
+- You are too far away from the target (40 blocks by default)
 - You take the axe out of your hand
 - Your axe is destroyed
 - You are dead
@@ -14,7 +14,7 @@ The chopping process stops if:
 
 ## Features
 
-- Super simple. Just 18 lines of code!
+- Super simple. Just ~20 lines of code!
 - Compatible with any game or mod
 - Works fine with huge trees (increase `max_distance` and `max_radius` if
   needed)
