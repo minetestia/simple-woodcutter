@@ -1,8 +1,8 @@
-# delay for each Step
-simple_woodcutter.delay (Miliseconds) float 0.01
+# Delay for each step
+simple_woodcutter.delay (Delay in seconds) float 0.01
 
-# Max Height of Tree
-simple_woodcutter.max_distance (Distance in Blocks) int 40
+# Max height of tree
+simple_woodcutter.max_distance (Distance in blocks) int 40
 
-# Max Radius of a Tree
-simple_woodcutter.max_radius (radius in Blocks) int 1
+# Max acceptable space between wood blocks
+simple_woodcutter.max_radius (Radius in blocks) int 1
