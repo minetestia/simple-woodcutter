@@ -14,9 +14,15 @@ The chopping process stops if:
 
 ## Features
 
-- Super simple. Just 15 lines of code!
+- Super simple. Just 18 lines of code!
 - Compatible with any game or mod
 - Works fine with huge trees (increase `max_distance` and `max_radius` if
   needed)
 - Recognizes trees and tools by their group, so it does not require any
   configuration
+
+## Latest update notes
+
+Since version `1.2.0`, chopping trees is performed with a new, more accurate
+algorithm that handles trees of all sizes and shapes, but this algorithm still
+needs your testing.
