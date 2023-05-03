@@ -1,4 +1,14 @@
-local max_distance, max_radius, delay = 40, 1, 0.01
+simple_woodcutter = {}
+local sw = simple_woodcutter
+sw.settings = {}
+
+sw.settings.max_distance = tonumber(minetest.settings:get("simple_woodcutter.max_distance") or 40)
+sw.settings.max_radius = tonumber(minetest.settings:get("simple_woodcutter.max_radius") or 1)
+sw.settings.delay = tonumber(minetest.settings:get("simple_woodcutter.delay") or 0.01)
+
+local max_distance = sw.settings.max_distance
+local max_radius = sw.settings.max_radius
+local delay = sw.settings.delay
 
 local function chop_around(pos, oldnode, digger)
   local next_pos = minetest.find_node_near(pos, max_radius, oldnode.name)
