@@ -24,5 +24,4 @@ The chopping process stops if:
 ## Latest update notes
 
 Since version `1.2.0`, chopping trees is performed with a new, more accurate
-algorithm that handles trees of all sizes and shapes, but this algorithm still
-needs your testing.
+algorithm that handles trees of all sizes and shapes! 🎉
