@@ -14,12 +14,15 @@ The chopping process stops if:
 
 ## Features
 
-- Super simple. Just ~20 lines of code!
+- Super simple. Just ~15 lines of code (without translations, settings and
+  privileges)!
 - Compatible with any game or mod
 - Works fine with huge trees (increase `max_distance` and `max_radius` if
   needed)
 - Recognizes trees and tools by their group, so it does not require any
   configuration
+- I you don't have the `lumberjack` permission (in multiplayer game), trees will
+  be cut 100 times slower (you can change the default `delay` in settings)
 
 ## Latest update notes
 
