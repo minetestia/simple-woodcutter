@@ -5,6 +5,9 @@ local delay = tonumber(ms:get "simple_woodcutter.delay") or 0.01
 local S = mt.get_translator(mt.get_current_modname())
 local privilege = { description = S "Player can fell trees quickly." }
 
+---@param pos mt.Vector
+---@param oldnode mt.Node
+---@param digger mt.PlayerObjectRef
 local function chop_recursive(pos, oldnode, digger)
   if not digger:is_player() then return end
   if not mt.registered_nodes[oldnode.name].groups.tree then return end

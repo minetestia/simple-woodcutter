@@ -28,3 +28,14 @@ The chopping process stops if:
 
 Since version `1.2.0`, chopping trees is performed with a new, more accurate
 algorithm that handles trees of all sizes and shapes! 🎉
+
+---
+
+This mod was created in [Minetestia Forge].
+
+All my mods uses [Minetest LSP-API] annotations, [StyLua] and [Luacheck].
+
+[Minetestia Forge]: https://github.com/orgs/minetestia/repositories
+[Minetest LSP-API]: https://github.com/minetest-toolkit/minetest-lsp-api
+[StyLua]: https://github.com/JohnnyMorganz/StyLua
+[Luacheck]: https://github.com/mpeterv/luacheck
