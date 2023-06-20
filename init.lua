@@ -9,7 +9,7 @@ local privilege = { description = S "Player can fell trees quickly." }
 ---@param oldnode mt.Node
 ---@param digger mt.PlayerObjectRef
 local function chop_recursive(pos, oldnode, digger)
-  if not digger:is_player() then return end
+  if not digger or not digger:is_player() then return end
   if not mt.registered_nodes[oldnode.name].groups.tree then return end
   if not digger:get_wielded_item():get_definition().groups.axe then return end
   if digger:get_hp() == 0 then return end
