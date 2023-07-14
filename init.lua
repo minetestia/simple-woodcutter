@@ -34,7 +34,7 @@ local function chop_recursive(pos, oldnode, digger)
     local wear = tool:get_wear()
     local tool_capabilities = tool:get_tool_capabilities()
     local dig_params = mt.get_dig_params(node_groups, tool_capabilities, wear)
-    if (wear + dig_params.wear) >= (65536 - dig_params.wear) then return end
+    if wear >= 65536 - dig_params.wear * 9 then return end
   end
   if digger:get_hp() == 0 then return end
   local d = delay
