@@ -16,7 +16,8 @@ The chopping process stops if:
 
 ## Features
 
-- Super simple. ~50 lines of code.
+- Super simple (~50 lines of code with extra features, translations and
+  settings, but core functionality is just 10-15 lines).
 - Compatible with any game or mod
 - Works fine with huge trees (increase `max_distance` and `max_radius` if
   needed)
