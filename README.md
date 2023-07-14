@@ -11,6 +11,8 @@ The chopping process stops if:
 - Your axe is destroyed
 - You are dead
 - You are out of the game
+- You are holding ctrl or shift key down (this behavior can be reversed in
+  settings)
 
 ## Features
 

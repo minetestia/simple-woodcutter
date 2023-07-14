@@ -8,3 +8,5 @@ simple_woodcutter.max_distance (Distance in blocks) int 40
 
 # Max acceptable space between wood blocks.
 simple_woodcutter.max_radius (Radius in blocks) int 1
+
+simple_woodcutter.reverse_modifiers (Reverse modifiers behavior) bool false

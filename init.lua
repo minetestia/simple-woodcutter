@@ -2,14 +2,28 @@ local mt, ms = minetest, minetest.settings
 local max_distance = tonumber(ms:get "simple_woodcutter.max_distance") or 40
 local max_radius = tonumber(ms:get "simple_woodcutter.max_radius") or 1
 local delay = tonumber(ms:get "simple_woodcutter.delay") or 0.01
+local reverse = ms:get "simple_woodcutter.reverse_modifiers" == "true" or false
 local S = mt.get_translator(mt.get_current_modname())
 local privilege = { description = S "Player can fell trees quickly." }
+
+---@param player mt.PlayerObjectRef
+---@return boolean
+local function check_modifiers(player)
+  local control = player:get_player_control() or {}
+  if reverse then
+    if not control.aux1 and not control.sneak then return false end
+  else
+    if control.aux1 or control.sneak then return false end
+  end
+  return true
+end
 
 ---@param pos mt.Vector
 ---@param oldnode mt.Node
 ---@param digger mt.PlayerObjectRef
 local function chop_recursive(pos, oldnode, digger)
   if not digger or not digger:is_player() then return end
+  if not check_modifiers(digger) then return end
   if not mt.registered_nodes[oldnode.name].groups.tree then return end
   if not digger:get_wielded_item():get_definition().groups.axe then return end
   if digger:get_hp() == 0 then return end
