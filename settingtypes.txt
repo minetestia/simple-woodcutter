@@ -9,4 +9,11 @@ simple_woodcutter.max_distance (Distance in blocks) int 40
 # Max acceptable space between wood blocks.
 simple_woodcutter.max_radius (Radius in blocks) int 1
 
+# Reverse modifiers behavior.
 simple_woodcutter.reverse_modifiers (Reverse modifiers behavior) bool false
+
+# If set to true, will not auto-cut downward.
+simple_woodcutter.only_upward (Cut upward only) bool true
+
+# If set to true, digging will stop before tool breaks.
+simple_woodcutter.prevent_tool_break (Prevent tool break) bool true

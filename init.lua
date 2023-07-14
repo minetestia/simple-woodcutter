@@ -2,7 +2,9 @@ local mt, ms = minetest, minetest.settings
 local max_distance = tonumber(ms:get "simple_woodcutter.max_distance") or 40
 local max_radius = tonumber(ms:get "simple_woodcutter.max_radius") or 1
 local delay = tonumber(ms:get "simple_woodcutter.delay") or 0.01
-local reverse = ms:get "simple_woodcutter.reverse_modifiers" == "true" or false
+local reverse = ms:get_bool("simple_woodcutter.reverse_modifiers", true)
+local only_upward = ms:get_bool("simple_woodcutter.only_upward", true)
+local prevent_break = ms:get_bool("simple_woodcutter.prevent_tool_break", true)
 local S = mt.get_translator(mt.get_current_modname())
 local privilege = { description = S "Player can fell trees quickly." }
 
@@ -24,14 +26,23 @@ end
 local function chop_recursive(pos, oldnode, digger)
   if not digger or not digger:is_player() then return end
   if not check_modifiers(digger) then return end
-  if not mt.registered_nodes[oldnode.name].groups.tree then return end
-  if not digger:get_wielded_item():get_definition().groups.axe then return end
+  local node_groups = mt.registered_nodes[oldnode.name].groups
+  if not node_groups.tree then return end
+  local tool = digger:get_wielded_item()
+  if not tool or not tool:get_definition().groups.axe then return end
+  if prevent_break then
+    local wear = tool:get_wear()
+    local tool_capabilities = tool:get_tool_capabilities()
+    local dig_params = mt.get_dig_params(node_groups, tool_capabilities, wear)
+    if (wear + dig_params.wear) >= (65536 - dig_params.wear) then return end
+  end
   if digger:get_hp() == 0 then return end
   local d = delay
   if not mt.check_player_privs(digger, "lumberjack") then d = d * 100 end
   mt.after(d, function()
     local next_pos = mt.find_node_near(pos, max_radius, oldnode.name)
     if not next_pos then return end
+    if only_upward and next_pos.y < pos.y then return end
     local digger_pos = digger:get_pos()
     if not digger_pos then return end
     if pos:distance(digger_pos) > max_distance then return end
