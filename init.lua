@@ -27,7 +27,7 @@ local function chop_recursive(pos, oldnode, digger)
   if not digger or not digger:is_player() then return end
   if not check_modifiers(digger) then return end
   local node_groups = mt.registered_nodes[oldnode.name].groups
-  if not node_groups.tree then return end
+  if not node_groups or not node_groups.tree then return end
   local tool = digger:get_wielded_item()
   if not tool or not tool:get_definition().groups.axe then return end
   if prevent_break then
