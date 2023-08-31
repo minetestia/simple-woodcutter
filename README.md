@@ -1,3 +1,7 @@
+# THIS REPO IS OUTDATED
+
+Moved here: https://notabug.org/minetestia/simple_woodcutter
+
 # Simple Woodcutter
 
 ![screenshot](screenshot.gif)
